@@ -1,8 +1,8 @@
 //Change this to a python script, just so everything is normalized..
 const {readFileSync, writeFileSync} = require('fs')
 
-const input_file = 'Lyrics_KanyeWest.json'
-const output_file = 'Lyrics/KanyeWest_filtered.json'
+const input_file = 'Lyrics_BROCKHAMPTON.json'
+const output_file = 'Lyrics/BROCKHAMPTON_filtered.json'
 
 const raw = readFileSync(input_file)
 

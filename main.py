@@ -89,11 +89,10 @@ def generate_seq(model, tokenizer, seq_length, seed_text, n_words):
         result.append(out_word)
     return ' '.join(result)
 
-
 text = clean_data(load_data(data_path))
 training = make_training_data(text)
 
-training = save_file(training, r"AI Misc\kanye_sequences.txt")
+training = save_file(training, r"AI Misc\BROCKHAMPTON_sequences.txt")
 training = training.split('\n')
 
 tokenizer = tf.keras.preprocessing.text.Tokenizer()
@@ -129,21 +128,23 @@ dump(tokenizer, open('tokenizer_dump.pkl', 'wb'))
 
 model.compile(loss='categorical_crossentropy',
               optimizer='adam', metrics=['accuracy'])
-model.fit(X, y, batch_size=128, epochs=120, callbacks=[
+model.fit(X, y, batch_size=128, epochs=80, callbacks=[
           checkpoint_callback, tensorboard_callback])
 
 #############################################################################
 seq_length = len(training[0].split()) - 1
 
 seed_text = training[random.randint(0, len(training))]
-seed_text = """Niggas is savage, niggas is monsters
-Niggas is pimps, niggas is players
-'Til niggas have daughters, now they precautious
-Father, forgive me, I'm scared of the karma
-'Cause now I see women as somethin' to nurture
-Not somethin' to conquer
-I hope she like Nicki, I make her a monster
-Not"""
+seed_text = """
+I got cracks in my phone screen
+The past fuck with my psyche
+Smoke weed and get high, please
+Went to school in The Woodlands
+And that made niggas wanna fight me
+So I don't take threats lightly
+Tell them niggas, "Come and find me"
+Gotta say it in my eye
+"""
 print("Initial Text: " + seed_text + "\n=======")
 
 generated = generate_seq(model, tokenizer, seq_length, seed_text, 150)

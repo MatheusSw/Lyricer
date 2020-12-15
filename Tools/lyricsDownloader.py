@@ -16,6 +16,7 @@ if __name__ == "__main__":
                       "Cape"] if sys.argv == 2 else sys.argv[3:]
 
     genius = lyricsgenius.Genius(genius_token)
+    genius.retries = 10
     genius.skip_non_songs = True
     genius.excluded_terms = excluded_terms
 
